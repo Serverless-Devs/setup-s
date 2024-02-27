@@ -3,10 +3,10 @@
   <span><b><a href="./README.md">中文</a> ｜ <a href="./README_en.md">English</a></b></span><br>
 </p>
 
-基于阿里云函数计算的 Serverless-devs 安装。
+Setting up serverless-devs based on Aliyun Function Compute.
 
-## 使用示例
-可以按需在 setup-s 前添加前置 steps，例如
+## Usage
+You could add pre-steps before using setup-s, for example:
 
 ```yaml
 steps:
@@ -69,28 +69,31 @@ steps:
       access: tencent_access
 ```
 
-## 参数说明
-| 字段 |  说明   | 类型 |  默认值  |
+## Params
+| Property |  Description   | Type |  Default  |
 | ----- |  -------- | ---- | ---|
-| provider |   必填，云厂商名称  |   string   | - |
-| account_id |   部分厂商账号ID  |   string   | - |
-| access_key_id  | 部分厂商账号AK |  string    | - |
-| access_key_secret  | 部分厂商账号SK |   string   | - |
-| secret_access_key  | 部分厂商账号SK |   string   | - |
-| secret_id  | 部分厂商账号AK |   string   | - |
-| secret_key  | 部分厂商账号SK |   string   | - |
-| access  | 密钥别名 |  string  | default |
-| version | 非必填，安装版本 |  3.0.0  | 3.0.0 |
+| provider |   required, service provider  |   string   | - |
+| account_id |   account ID  |   string   | - |
+| access_key_id  | optical account AK |  string    | - |
+| access_key_secret  | optical account SK |   string   | - |
+| secret_access_key  | optical account SK |   string   | - |
+| secret_id  | optical account AK |   string   | - |
+| secret_key  | optical account SK |   string   | - |
+| access  | access alias |  string  | default |
+| version | serverless-devs version |  3.0.0  | 3.0.0 |
 
 
-密钥相关说明详见 [Serverless-devs 文档](https://docs.serverless-devs.com/serverless-devs/default_provider_config#%E9%98%BF%E9%87%8C%E4%BA%91%E5%AF%86%E9%92%A5%E8%8E%B7%E5%8F%96)。
+More details about Aliyun Access Configs, please refer to [Serverless-devs doc](https://docs.serverless-devs.com/serverless-devs/default_provider_config#%E9%98%BF%E9%87%8C%E4%BA%91%E5%AF%86%E9%92%A5%E8%8E%B7%E5%8F%96)。
 
 
-## 常见云厂商密钥配置内容
+## Provider's Access Configs
 
-| 云厂商 | 类型 |
+| Provider | Required |
 | --- | --- |
-| aliyun |    AccountID, AccessKeyID, AccessKeySecret |
+| alibaba |    AccountID, AccessKeyID, AccessKeySecret |
 | aws |        AccessKeyID, SecretAccessKey|
+| baidu |      AccessKeyID, SecretAccessKey|
 | huawei |     AccessKeyID, SecretAccessKey|
+| azure |      KeyVaultName, TenantID, ClientID, ClientSecret|
 | tencent |    AccountID, SecretID, SecretKey|
+| google |     PrivateKeyData |

@@ -1,0 +1,55 @@
+name: 'Setup for Serverless-Devs'
+description: 'An Action for Setup Serverless-Devs and Different Provider Authorization Config'
+author: 'heimanba'
+branding:
+  icon: 'heart'
+  color: 'red'
+
+inputs:
+  provider: 
+    description: 'Provider Name (aliyun/aws/tencent/huawei)'
+    required: true
+    default: 'aliyun'
+  version:
+    description: 'Serverless-devs Version, 3.0.0 as default.'
+    required: false
+    default: '3.0.0'
+  access:
+    description: 'Access Alias Name'
+    required: true
+    default: 'default'
+  account_id:
+    description: 'Main Account ID'
+    required: false
+  access_key_id:
+    description: 'Access Key ID'
+    required: false
+  access_key_secret:
+    description: 'Access Key Secret'
+    required: false
+  secret_access_key:
+    description: 'Secret Access Key'
+    required: false
+  secret_id:
+    description: 'Secret ID'
+    required: false
+  secret_key:
+    description: 'Secret Key'
+    required: false
+
+
+runs:
+  using: "composite"
+  steps:
+    - run: ./script.sh ${{inputs.provider}} ${{ inputs.version }} ${{ inputs.account_id }} ${{ inputs.access_key_id }} ${{ inputs.access_key_secret }} ${{ inputs.access }}
+      shell: bash
+      if: inputs.provider == 'aliyun'
+    - run: ./script.sh ${{inputs.provider}} ${{ inputs.version }} ${{ inputs.access_key_id }} ${{ inputs.secret_access_key }} ${{ inputs.access }}
+      shell: bash
+      if: inputs.provider == 'aws'
+    - run: ./script.sh ${{inputs.provider}} ${{ inputs.version }} ${{ inputs.account_id }} ${{ inputs.access_key_id }} ${{ inputs.secret_key }} ${{ inputs.access }}
+      shell: bash
+      if: inputs.provider == 'tencent'
+    - run: ./script.sh ${{inputs.provider}} ${{ inputs.version }} ${{ inputs.access_key_id }} ${{ inputs.secret_access_key }} ${{ inputs.access }}
+      shell: bash
+      if: inputs.provider == 'huawei'
