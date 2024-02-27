@@ -1,0 +1,73 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main", "dev" ]
+  pull_request:
+    branches: [ "main", "dev" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 14.14.0
+
+      # Runs my action
+      - name: Setup serverless-devs for aliyun
+        id: setup-s-aliyun
+        uses: ./
+        with:
+          provider: aliyun
+          account_id: MOCK_ACCOUNT_ID
+          access_key_id: MOCK_KEY_ID
+          access_key_secret: MOCK_KEY_SECRET
+          access: MOCK_ACCESS_ALIAS_ALIYUN
+
+      - name: Setup serverless-devs for aws
+        id: setup-s-aws
+        uses: ./
+        with:
+          provider: aws
+          access_key_id: MOCK_KEY_ID
+          secret_access_key: MOCK_Secret_Access_Key
+          access: MOCK_ACCESS_ALIAS_AWS
+
+      - name: Setup serverless-devs for tencent
+        id: setup-s-tencent
+        uses: ./
+        with:
+          provider: tencent
+          account_id: MOCK_ACCOUNT_ID
+          secret_id: MOCK_SECRET_ID
+          secret_key: MOCK_SECRET_KEY
+          access: MOCK_ACCESS_ALIAS_TENCENT
+
+      - name: Setup serverless-devs for huawei
+        id: setup-s-huawei
+        uses: ./
+        with:
+          provider: huawei
+          access_key_id: MOCK_KEY_ID
+          secret_access_key: MOCK_Secret_Access_Key
+          access: MOCK_ACCESS_ALIAS_HUAWEI
+
