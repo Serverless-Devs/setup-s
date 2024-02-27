@@ -1,9 +1,9 @@
-# setup-s-aliyun
+# setup-s
 <p align="center">
   <span><b><a href="./README.md">中文</a> ｜ <a href="./README_en.md">English</a></b></span><br>
 </p>
 
-基于阿里云函数计算的 Serverless-devs 安装。
+面向不同云厂商的 Serverless-devs 快速配置安装。
 
 ## 使用示例
 可以按需在 setup-s 前添加前置 steps，例如
