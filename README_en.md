@@ -1,9 +1,9 @@
-# setup-s-aliyun
+# setup-s
 <p align="center">
   <span><b><a href="./README.md">中文</a> ｜ <a href="./README_en.md">English</a></b></span><br>
 </p>
 
-Setting up serverless-devs based on Aliyun Function Compute.
+A quick setup for serverless-devs based on different providers.
 
 ## Usage
 You could add pre-steps before using setup-s, for example:
